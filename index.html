@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festa de 15 Anos - Maria Eduarda Trudes</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="effects/animations.css">
+  <script src="effects/trail.js" defer></script>
+  <script src="renderer.js" defer></script>
+  <link rel="icon" href="assets/favicon.ico">
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+  </header>
+  <main>
+    <!-- Tela de Boas-Vindas (sem QR Code, só para o público) -->
+    <section id="welcome-section" class="form-section">
+      <h1 class="title">Bem-vindo(a) à Festa</h1>
+      <h2 class="subtitle">Maria Eduarda Trudes</h2>
+      <button id="compartilharBtn">COMPARTILHAR MOMENTOS</button>
+    </section>
+    <!-- Tela de Upload -->
+    <section id="upload-section" class="form-section" style="display:none;">
+      <h1 class="title">Envie Seus Arquivos</h1>
+      <form id="uploadForm">
+        <div class="form-group">
+          <label for="name">Nome Completo</label>
+          <input type="text" id="name" name="name" required placeholder="Seu nome completo">
+        </div>
+        <div class="form-group">
+          <label for="whatsapp">WhatsApp</label>
+          <input type="text" id="whatsapp" name="whatsapp" required placeholder="Ex: 5511999999999">
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+        </div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="authorize" name="authorize" required>
+          <label for="authorize">Autorizo compartilhar minhas fotos e vídeos</label>
+        </div>
+        <button type="button" id="selectFilesBtn" disabled>Selecionar Arquivos</button>
+      </form>
+      <!-- Input de arquivos oculto -->
+      <input type="file" id="fileInput" name="files" accept="image/*,video/*,audio/*" multiple style="display:none;">
+      <!-- Área para pré-visualização dos arquivos -->
+      <div id="filePreview" class="file-preview"></div>
+      <button type="button" id="uploadBtn" class="upload-btn" disabled>Enviar</button>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Festa de 15 Anos - Maria Eduarda Trudes</p>
+  </footer>
+</body>
+</html>

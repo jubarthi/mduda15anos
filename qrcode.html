@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code - Admin</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #f2f2f2;
+    }
+    #qrContainer {
+      margin-top: 20px;
+      /* Tamanho será definido dinamicamente */
+    }
+  </style>
+</head>
+<body>
+  <h1>Escaneie o QR Code</h1>
+  <div id="qrContainer"></div>
+  <script>
+    const { ipcRenderer } = require('electron');
+    ipcRenderer.on('qr-code', (event, qr) => {
+      const qrContainer = document.getElementById('qrContainer');
+      qrContainer.innerHTML = "";
+      // Tamanho responsivo: 60% do menor lado da janela
+      const size = Math.floor(Math.min(window.innerWidth, window.innerHeight) * 0.6);
+      new QRCode(qrContainer, {
+        text: qr,
+        width: size,
+        height: size,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+    });
+  </script>
+</body>
+</html>
